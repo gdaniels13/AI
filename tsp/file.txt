@@ -1,0 +1,61 @@
+Programming Assignment # 2:
+
+Travelling Salesman Problem 
+
+In this assignment, you want to do the following:
+
+Step1:
+
+Study and write the algorithms for alternative branch and bound techniques for TSP
+
+a) Exhaustive
+
+b) Branch and bound with true path length so far as cutoff (bound).
+
+c) Problem solver b with greedy order expansion (order the next cities by shortest distance)
+
+d) Problem solver c with the addition of a heuristic that better estimates the distance to completion. Here you may try a series of heuristics, some of which we discussed in class. Recall, that the more accurate the heuristic in estimating the cost to complete, the more aggressive pruning. However, better heuristics will often take more cpu time to compute so even through there will be less nodes expanded in the tree, the cpu time may not be better.
+
+ 
+
+Step2:
+
+Code the above algorithms. Don’t forget to include the cost back to the starting city.
+
+                                                                                            
+
+Step3:
+
+a) Run the system on a set of random problems of increasing size (number of cities). For each problem size, use the same problem set for each algorithm. This is called a “paired test” in statistics and provides a more accurate estimation of the algorithms relative performance.
+
+b) Measure the run time of each algorithm
+
+c) Produce a plot showing how the run time increases with problem size. Use a linear (problem size) log (run time graph). Make sure you label the axis of the graph and provide a key so it is clear which line corresponds to which algorithm.
+
+ 
+
+Step4:
+
+- Run the program on the attached problem (see tsp225.txtPreview the documentView in a new window ) and pick the best quality (shortest distance) solution for each method. Graph out the solutions as an image.
+
+ 
+
+Submit the following:
+
+-A brief report including the algorithm descriptions, the experimental conditions (algorithm and how the problem sets were generated) and the graphs.
+
+ 
+
+- The code you write (step2)
+
+ 
+
+Note:
+
+-You will need to use a time cutoff to avoid excessive run time. Use the same cutoff for each algorithm. You may find that some algorithms can solve larger problems within the same time limit.
+
+- No teams this time
+
+- We will post the second part that will be done the following week in a few days. This part will apply a different set of methods to solve the same TSP problem.
+
+ 
