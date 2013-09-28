@@ -18,8 +18,9 @@ public class Graph {
     }
     public Graph(String fileName)
     {
+        nodes = new ArrayList<>();
         readList(fileName);
-        createAdjacencyMatrix();
+//        createAdjacencyMatrix();
     }
     
     
@@ -36,11 +37,11 @@ public class Graph {
                 str = in.readLine().split(" ");
                 double x = Double.parseDouble(str[1]);
                 double y = Double.parseDouble(str[2]);
-                
                 nodes.add(new City(str[0], new Point2D.Double(x,y)));
             }
       } 
-        catch (IOException e) {
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
     

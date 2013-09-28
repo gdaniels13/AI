@@ -22,23 +22,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        Graph t = new Graph();
-//        t.readList("graphs/test8.graph");
-//        ArrayList<City> cities = t.getList();
-//        t.createAdjacencyMatrix();
-//        
-//        Exhaustive e = new Exhaustive(t);
-//        
-//        e.getPath();
-//        
-//        for (City city : e.bestPath) {
-//            System.out.println(city);
-//        }
-//        
-//        System.out.println("bestCost = " +e.bestCost);
-        
-        generate(4,12,"graphs/test",150);
-
+       testExhaustive(5, 25, "graphs/test");
+//       generate(5,100,"graphs/test",500);
+       
     }
     
     public static void testExhaustive(int min, int max,String name)
@@ -49,11 +35,12 @@ public class Main {
             fout.println("problem size time in seconds");
             for(int i = min; i<max; ++i)
             {
+                
                 Graph g = new Graph(name+i);
                 long result = testGraph(g);
-                
-                fout.println(min + "\t" + result/1000000000);
-                
+                double time = result / 1000000000.0;
+                fout.println(i + "\t" + time);
+                fout.flush();
                 
             }
         } catch (FileNotFoundException ex) {
