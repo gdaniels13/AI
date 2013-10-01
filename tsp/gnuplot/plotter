@@ -1,0 +1,8 @@
+#
+set autoscale
+set logscale y
+set title "TSP"
+set xlabel "Problem Size"
+set ylabel "Time(seconds)"
+plot "exhaustive5to15" using 1:2 title 'Exhaustive' with linespoints, \
+	 "branch" using 1:2 title 'Branch And Bound' with linespoints 
