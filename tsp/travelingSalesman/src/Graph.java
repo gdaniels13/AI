@@ -20,7 +20,7 @@ public class Graph {
     {
         nodes = new ArrayList<>();
         readList(fileName);
-//        createAdjacencyMatrix();
+        createAdjacencyMatrix();
     }
     
     
@@ -37,7 +37,7 @@ public class Graph {
                 str = in.readLine().split(" ");
                 double x = Double.parseDouble(str[1]);
                 double y = Double.parseDouble(str[2]);
-                nodes.add(new City(str[0], new Point2D.Double(x,y)));
+                nodes.add(new City(Integer.parseInt(str[0]), new Point2D.Double(x,y)));
             }
       } 
         catch (Exception e) {
@@ -65,6 +65,10 @@ public class Graph {
     
     public static double FindCost(ArrayDeque<City> paths)
     {
+        if(paths.size()<=1)
+        {
+            return 0;
+        }
         ArrayList<City> path;
         path = new ArrayList<>(paths);
         

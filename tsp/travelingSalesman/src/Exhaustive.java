@@ -19,7 +19,7 @@ public class Exhaustive {
         generatePaths(new ArrayDeque<City>());
         
         
-        return null;
+        return bestPath;
     }
     
     
