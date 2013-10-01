@@ -27,9 +27,9 @@ public class Main {
     
     public static void main(String[] args) {
         Main t = new Main();
-       // t.testBranchBound(5, 13, "graphs/test");
+        t.testBranchBound(5, 25, "graphs/test");
 //        t.testExhaustive(5, 13, "graphs/test");
-        t.testGreedyBranchBound(5,25,"graphs/test");
+        //t.testGreedyBranchBound(5,25,"graphs/test");
     }
 
     public  void testGreedyBranchBound(int min, int max, String name) {
