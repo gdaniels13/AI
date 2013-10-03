@@ -2,7 +2,6 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Vector;
 
 /*
  * To change this template, choose Tools | Templates
@@ -28,13 +27,16 @@ public class BBGreedy {
     
     public ArrayList<City> getPath()
     {
-        generatePaths(new ArrayDeque<City>(), graph.nodes.get(0) );
+        ArrayDeque p = new ArrayDeque<City>();
+        p.add(graph.nodes.get(0));
+        graph.nodes.remove(0);
+        generatePaths(p,graph.nodes);
         return bestPath;
         
     }
     
-    
-    public void generatePaths(ArrayDeque<City> path, City lastCity)    {
+    public void generatePaths(ArrayDeque<City> path, ArrayList<City> nodesLeft)
+    {
         if(path.size()==graph.numNodes)
         {
             double cost = Graph.FindCost(path);
@@ -51,41 +53,49 @@ public class BBGreedy {
             return;
         }
         
-        ArrayDeque<City> newPath = new ArrayDeque<>(path);
+
         
-        ArrayList nodesLeft = sortByDistance(new ArrayList(graph.nodes), lastCity);
-        
-        for(int i = 0; i<graph.nodes.size(); ++i)
+        //first time through, nothing to sort by
+        ArrayList<City> newNodesLeft = sortByDistance(nodesLeft, path.peekLast());
+//        System.out.println(path.peekLast().name);
+//        for (City city : newNodesLeft) {
+//            System.out.print("" + city.name + "::" + city.distanceToPoint + " ");
+//        }
+//        System.out.println("");
+        for(int i = 0; i<newNodesLeft.size(); ++i)
         {
-            if(graph.nodes.get(i).used != true)
-            {
-                newPath.addLast(new City(graph.nodes.get(i)));
-                graph.nodes.get(i).used = true;
-                generatePaths(newPath, graph.nodes.get(i));
-                graph.nodes.get(i).used = false;
-                newPath.removeLast();
-            }
-            else
-            {
-                continue;
-            }
-        }
-    }    
-     
+            City t = newNodesLeft.get(i);
+            path.addLast(new City(t));
+            newNodesLeft.remove(i);
+            generatePaths(path,newNodesLeft);
+            newNodesLeft.add(i,t);
+            path.removeLast();
+        }      
+    }
+    
+   
     
     public ArrayList<City> sortByDistance(ArrayList<City> path, City from)
     {
-        
-        for (City city : path) {
-            city.setDistancetoPoint(from);            
+        if(from == null)
+        {
+            return path;
         }
-        Collections.sort(path);
-//        for (City city : path) {
-//            System.out.println(city.distanceToPoint);
-//            
-//        }
-        return path;
-    }
-
-    
+        
+        ArrayList<City>p = new ArrayList<>();
+        for(int i =0; i<path.size(); ++i)
+        {
+           path.get(i).setDistancetoPoint(from); 
+           if(path.get(i).distanceToPoint==0)
+           {
+               //do nothing
+           }
+           else
+           {
+               p.add(new City(path.get(i)));
+           }
+        }
+        Collections.sort(p);
+        return p;
+    }    
 }

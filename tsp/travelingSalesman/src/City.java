@@ -33,6 +33,7 @@ public class City implements Comparable
         this.location = c.location;
         this.name = c.name;
         this.used = c.used;
+        this.distanceToPoint = c.distanceToPoint;
     }
 
     public String toString()

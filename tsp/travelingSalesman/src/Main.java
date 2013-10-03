@@ -1,4 +1,5 @@
 
+import java.awt.geom.Point2D;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,10 +27,18 @@ public class Main {
     BBGreedy bbg;
     
     public static void main(String[] args) {
-        Main t = new Main();
-        t.testBranchBound(5, 25, "graphs/test");
-//        t.testExhaustive(5, 13, "graphs/test");
-        //t.testGreedyBranchBound(5,25,"graphs/test");
+//    City p = new City(0, new Point2D.Double(0,0));
+//    City q = new City(1, new Point2D.Double(1,1));
+//    q.setDistancetoPoint(p);
+//    City f = new City(q);
+//        System.out.println(q.distanceToPoint);
+//    
+        
+        
+          Main t = new Main();
+//          t.testBranchBound(5, 15, "graphs/test");
+//          t.testExhaustive(5, 13, "graphs/test");
+          t.testGreedyBranchBound(5,25,"graphs/test");
     }
 
     public  void testGreedyBranchBound(int min, int max, String name) {
@@ -41,6 +50,7 @@ public class Main {
                 Graph g = new Graph(name + i);
                 long result = testGreedyBranchBound(g);
                 double time = result / 1000000000.0;
+                System.out.println("" + i + " " + time);
                 fout.print(i + "\t" + time + " cost:" + bbg.bestCost + " [");
                 for (City city : bbg.bestPath) {
                     fout.print(city.name + ", ");
@@ -148,8 +158,6 @@ public class Main {
             }
             fout.close();
         }
-
-
     }
 
 }
