@@ -18,6 +18,7 @@ public class BBGreedy implements TSPSolver{
     Graph graph;
     double bestCost;
     ArrayList<City> bestPath;
+    private long timeout;
     
     
     public BBGreedy(Graph graph) {
@@ -35,8 +36,24 @@ public class BBGreedy implements TSPSolver{
         
     }
     
+    
+        public ArrayList<City> getPath( long timeout)
+    {
+        this.timeout = ((long)timeout)*((long)1000000000) + System.nanoTime();
+        ArrayDeque p = new ArrayDeque<City>();
+        p.add(graph.nodes.get(0));
+        graph.nodes.remove(0);
+        generatePaths(p,graph.nodes);
+        return bestPath;
+    }
+    
+    
     public void generatePaths(ArrayDeque<City> path, ArrayList<City> nodesLeft)
     {
+
+        if(System.nanoTime()>this.timeout)
+            return;
+        
         if(path.size()==graph.numNodes)
         {
             double cost = Graph.FindCost(path);

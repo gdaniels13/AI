@@ -7,6 +7,7 @@ public class Exhaustive implements TSPSolver{
     Graph graph;
     double bestCost;
     ArrayList<City> bestPath;
+    private long timeout;
     
     
     public Exhaustive(Graph graph) {
@@ -21,10 +22,20 @@ public class Exhaustive implements TSPSolver{
         
         return bestPath;
     }
+  public ArrayList<City> getPath( long timeout)
+    {
+        this.timeout = ((long)timeout)*((long)1000000000) + System.nanoTime();
+        generatePaths(new ArrayDeque<City>());
+        
+        
+        return bestPath;
+    }
     
     
     public void generatePaths(ArrayDeque<City> path)
     {
+        if(System.nanoTime()>this.timeout)
+            return;
         if(path.size()==graph.numNodes)
         {
             double cost = Graph.FindCost(path);

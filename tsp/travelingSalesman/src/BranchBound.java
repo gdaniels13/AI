@@ -9,7 +9,7 @@ public class BranchBound implements TSPSolver {
     Graph graph;
     double bestCost;
     ArrayList<City> bestPath;
-    
+    long timeout;
     
     public BranchBound(Graph graph) {
         this.graph = graph;
@@ -18,6 +18,17 @@ public class BranchBound implements TSPSolver {
     
     public ArrayList<City> getPath()
     {
+        
+        generatePaths(new ArrayDeque<City>());
+        
+        
+        return bestPath;
+    }
+    
+    
+    public ArrayList<City> getPath( long timeout)
+    {
+        this.timeout = ((long)timeout)*((long)1000000000) + System.nanoTime();
         generatePaths(new ArrayDeque<City>());
         
         
@@ -27,6 +38,9 @@ public class BranchBound implements TSPSolver {
     
     public void generatePaths(ArrayDeque<City> path)
     {
+        if(System.nanoTime()>this.timeout)
+            return;
+        
         if(path.size()==graph.numNodes)
         {
             double cost = Graph.FindCost(path);

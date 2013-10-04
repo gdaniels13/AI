@@ -54,7 +54,7 @@ public class City implements Comparable
 
     public String toString()
     {
-        return "" + name +" " + location.x + " " + location.y;
+        return "" + name;// +" " + location.x + " " + location.y;
     }
 
     public double distance(City c)

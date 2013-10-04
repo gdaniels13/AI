@@ -1,13 +1,11 @@
 
-import java.awt.geom.Point2D;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /*
  * To change this template, choose Tools | Templates
@@ -26,33 +24,49 @@ public class Main {
     Exhaustive ex;
     BBGreedy bbg;
     Heuristical hs;
-    
+
     public static void main(String[] args) {
-//        Graph graph = new Graph();
-//
-//        graph.addCity(new City(0, new Point2D.Double(-1,5)) );
-//        graph.addCity(new City(1, new Point2D.Double(0,0)) );
-//        graph.addCity(new City(2, new Point2D.Double(0,1)) );
-//        graph.addCity(new City(3, new Point2D.Double(0,2)) );
-//        graph.addCity(new City(4, new Point2D.Double(0,3)) );
-//        graph.addCity(new City(5, new Point2D.Double(0,4)) );
-//        graph.addCity(new City(0, new Point2D.Double(1,5)) );
-//        graph.addCity(new City(5, new Point2D.Double(0,5)) );
-//    
-//        System.out.println(graph.getMSTCost());
-//    
-//    q.setDistancetoPoint(p);
-//    City f = new City(q);
-//        System.out.println(q.distanceToPoint);
-    
-               
-          Main t = new Main();
-////          t.testBranchBound(5, 15, "graphs/test");
+
+        Main t = new Main();
+        //t.testBranchBound(19, 20, "graphs/test");
 ////          t.testExhaustive(5, 13, "graphs/test");
-          t.testTSPSolver(5,25,"graphs/test");
+//          t.testTSPSolver(13,14,"graphs/test");
+        //t.createPicture(null);
+        t.testGivenGraph();
     }
 
-    public  void testTSPSolver(int min, int max, String name) {
+    public void testGivenGraph() {
+        String name = "tsp225.txt";
+//        String name = "graphs/test5";
+        long timeout = 1800;
+
+//        BranchBound branch = new BranchBound(new Graph(name));
+//        BBGreedy greedy = new BBGreedy(new Graph(name));
+        Heuristical heu = new Heuristical(new Graph(name));
+//        Exhaustive ex = new Exhaustive(new Graph(name));
+        
+//        ex.getPath(timeout);
+//        branch.getPath(timeout);
+//        greedy.getPath(timeout);
+        heu.getPath(timeout);
+        
+        
+//        createPicture(ex.bestPath, "Exhaustive with Timeout: " + timeout + " seconds. Cost: " + ex.bestCost);
+//        createPicture(greedy.bestPath, "Branch and Bound With Greedy First expansion\n Timeout: " + timeout + " seconds.\n Cost: " + greedy.bestCost);
+//        createPicture(branch.bestPath, "Branch and Bound Timeout: " + timeout + " seconds. \n Cost: " + branch.bestCost);
+        createPicture(heu.bestPath, "Branch and Bound With Greedy First expansion \n with aditional heuristics Timeout: " + timeout + " seconds.\n Cost: " + heu.bestCost);
+    }
+
+    public void createPicture(ArrayList<City> path, String title) {
+        ShowGraph g = new ShowGraph(500, path, title);
+        JFrame myFrame = new JFrame(title);
+        myFrame.getContentPane();
+        myFrame.add(g);
+        myFrame.pack();
+        myFrame.setVisible(true);
+    }
+
+    public void testTSPSolver(int min, int max, String name) {
         PrintWriter fout = null;
         try {
             fout = new PrintWriter(name + min + "to" + max + "Heuristic");
@@ -65,7 +79,7 @@ public class Main {
                 for (City city : hs.bestPath) {
                     fout.print(city.name + ", ");
                 }
-                                fout.print("]\n");
+                fout.print("]\n");
 
                 fout.flush();
 
@@ -76,15 +90,16 @@ public class Main {
             fout.close();
         }
     }
-      private  long testTSPSolver(Graph g) {
+
+    private long testTSPSolver(Graph g) {
         hs = new Heuristical(g);
         long begin = System.nanoTime();
         hs.getPath();
         long end = System.nanoTime();
         return end - begin;
     }
-    
-    public  void testGreedyBranchBound(int min, int max, String name) {
+
+    public void testGreedyBranchBound(int min, int max, String name) {
         PrintWriter fout = null;
         try {
             fout = new PrintWriter(name + min + "to" + max + "GreedybranchBound");
@@ -98,7 +113,7 @@ public class Main {
                 for (City city : bbg.bestPath) {
                     fout.print(city.name + ", ");
                 }
-                                fout.print("]\n");
+                fout.print("]\n");
 
                 fout.flush();
 
@@ -110,14 +125,14 @@ public class Main {
         }
     }
 
-    private  long testGreedyBranchBound(Graph g) {
+    private long testGreedyBranchBound(Graph g) {
         bbg = new BBGreedy(g);
         long begin = System.nanoTime();
         bbg.getPath();
         long end = System.nanoTime();
         return end - begin;
     }
-    
+
     public void testBranchBound(int min, int max, String name) {
         PrintWriter fout = null;
         try {
@@ -143,15 +158,15 @@ public class Main {
         }
     }
 
-    private  long testBranchBound(Graph g) {
+    private long testBranchBound(Graph g) {
         bb = new BranchBound(g);
         long begin = System.nanoTime();
-        bb.getPath();
+        bb.getPath(50);
         long end = System.nanoTime();
         return end - begin;
     }
-    
-    public  void testExhaustive(int min, int max, String name) {
+
+    public void testExhaustive(int min, int max, String name) {
         PrintWriter fout = null;
         try {
             fout = new PrintWriter(name + min + "to" + max + "testrun");
@@ -175,7 +190,7 @@ public class Main {
         }
     }
 
-    public  long testExhaustive(Graph p) {
+    public long testExhaustive(Graph p) {
         ex = new Exhaustive(p);
         long begin = System.nanoTime();
         ex.getPath();
@@ -184,7 +199,7 @@ public class Main {
 
     }
 
-    public  void generate(int min, int max, String name, int RANGE) {
+    public void generate(int min, int max, String name, int RANGE) {
         PrintWriter fout = null;
         BufferedWriter out;
         for (int i = min; i <= max; ++i) {
@@ -202,5 +217,4 @@ public class Main {
             fout.close();
         }
     }
-
 }

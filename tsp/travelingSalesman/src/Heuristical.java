@@ -19,6 +19,7 @@ public class Heuristical implements TSPSolver {
     Graph graph;
     double bestCost;
     ArrayList<City> bestPath;
+    private long timeout;
     
     public Heuristical(Graph graph) {
         this.graph = graph;
@@ -33,6 +34,16 @@ public class Heuristical implements TSPSolver {
         graph.nodes.remove(0);
         generatePaths(p,graph.nodes);
         return bestPath;  
+    }
+    
+          public ArrayList<City> getPath( long timeout)
+    {
+        this.timeout = ((long)timeout)*((long)1000000000) + System.nanoTime();
+        ArrayDeque p = new ArrayDeque<City>();
+        p.add(graph.nodes.get(0));
+        graph.nodes.remove(0);
+        generatePaths(p,graph.nodes);
+        return bestPath;
     }
     
     public double estimateMinimumLeft(ArrayList<City> nodesLeft) {
@@ -90,6 +101,11 @@ public class Heuristical implements TSPSolver {
     
     public void generatePaths(ArrayDeque<City> path, ArrayList<City> nodesLeft)
     {
+        
+        if(System.nanoTime()>this.timeout)
+            return;
+        
+        
         double curCost = Graph.FindCost(path);
         if(path.size()==graph.numNodes)
         {
