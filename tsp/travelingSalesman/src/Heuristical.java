@@ -2,6 +2,7 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.PriorityQueue;
 
 /*
  * To change this template, choose Tools | Templates
@@ -12,31 +13,84 @@ import java.util.Collections;
  *
  * @author gregor
  */
-public class BBGreedy implements TSPSolver{
+public class Heuristical implements TSPSolver {
      
     
     Graph graph;
     double bestCost;
     ArrayList<City> bestPath;
     
-    
-    public BBGreedy(Graph graph) {
+    public Heuristical(Graph graph) {
         this.graph = graph;
         bestCost = Double.MAX_VALUE;
     }
     
+    @Override
     public ArrayList<City> getPath()
     {
-        ArrayDeque p = new ArrayDeque<City>();
+        ArrayDeque p = new ArrayDeque<>();
         p.add(graph.nodes.get(0));
         graph.nodes.remove(0);
         generatePaths(p,graph.nodes);
-        return bestPath;
-        
+        return bestPath;  
     }
+    
+    public double estimateMinimumLeft(ArrayList<City> nodesLeft) {
+        double toReturn = 0;
+        for (City city : nodesLeft) {
+            toReturn += city.closestCityDistance;
+        }
+       return toReturn; 
+    }
+    
+    
+    //oops
+     public double getMSTCost(ArrayList<City> nodes)
+    {
+        double cost = 0;
+              
+        if(nodes.isEmpty()) return 0;
+        ArrayList<City> unvisited = new ArrayList<>(nodes);
+        
+        unvisited.remove(nodes.get(0));
+        PriorityQueue<Edge> availableEdges = new PriorityQueue<>();
+        City curCity = nodes.get(0);
+        while(!unvisited.isEmpty())
+        {
+            for(Edge e : curCity.edges)
+            {
+                if(unvisited.contains(e.b))
+                {
+                    availableEdges.add(e);
+                }
+            }
+            
+            Edge e = availableEdges.remove();
+            cost += e.distance;
+            curCity = e.b;
+            unvisited.remove(e.b);
+        }
+        return cost;
+    }
+     
+     
+    
+     
+    
+    private ArrayList<Edge> getEdges(City cur, ArrayList<City> p) {
+        ArrayList<Edge> toReturn = new ArrayList<>();
+        
+        for (City city  : p) {
+            toReturn.add(new Edge(cur, city));
+        }
+        
+        return toReturn;
+    }
+    
     
     public void generatePaths(ArrayDeque<City> path, ArrayList<City> nodesLeft)
     {
+        double curCost = Graph.FindCost(path);
         if(path.size()==graph.numNodes)
         {
             double cost = Graph.FindCost(path);
@@ -45,19 +99,21 @@ public class BBGreedy implements TSPSolver{
                 bestCost = cost;
                 bestPath = new ArrayList<>(path);
             }
-            //determine if best so far, if so save it.
             return;
         }
-        else if(Graph.FindCost(path)>bestCost)
+        else if(curCost>bestCost)
         {
             return;
         }
+        else if((curCost + estimateMinimumLeft(nodesLeft) )> bestCost )
+        {
+
+            return;
+        }
         
 
         
-        //first time through, nothing to sort by
         ArrayList<City> newNodesLeft = sortByDistance(nodesLeft, path.peekLast());
-
         for(int i = 0; i<newNodesLeft.size(); ++i)
         {
             City t = newNodesLeft.get(i);
@@ -94,4 +150,5 @@ public class BBGreedy implements TSPSolver{
         Collections.sort(p);
         return p;
     }    
+
 }

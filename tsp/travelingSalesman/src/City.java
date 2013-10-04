@@ -1,5 +1,6 @@
 
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 
 /*
  * To change this template, choose Tools | Templates
@@ -16,16 +17,31 @@ public class City implements Comparable
     Point2D.Double location;
     int name;
     double distanceToPoint;
-
+    double closestCityDistance;
+    City closestCity;
+    
+    ArrayList<Edge> edges;
+    
     boolean used;
     public City(int name, Point2D.Double location) {
         this.location = location;
         this.name = name;
         used = false;
     }
+
+    public void setClosestCity(City closestCity) {
+        this.closestCity = closestCity;
+        this.closestCityDistance = distance(closestCity);
+    }
+    
+    
     public void setDistancetoPoint(City c)
     {
         distanceToPoint = this.distance(c);
+    }
+
+    public void setEdges(ArrayList<Edge> edges) {
+        this.edges = edges;
     }
     
     public City(City c)
@@ -58,5 +74,14 @@ public class City implements Comparable
         {
             return 1;
         }
+    }
+    
+    
+    @Override
+    public boolean equals(Object o){
+        City temp = (City) o;
+        if( temp.location == this .location && temp.name == this.name)
+            return true;
+        return false;
     }
 }

@@ -3,7 +3,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 
-public class Exhaustive {
+public class Exhaustive implements TSPSolver{
     Graph graph;
     double bestCost;
     ArrayList<City> bestPath;

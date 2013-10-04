@@ -25,22 +25,65 @@ public class Main {
     BranchBound bb;
     Exhaustive ex;
     BBGreedy bbg;
+    Heuristical hs;
     
     public static void main(String[] args) {
-//    City p = new City(0, new Point2D.Double(0,0));
-//    City q = new City(1, new Point2D.Double(1,1));
+//        Graph graph = new Graph();
+//
+//        graph.addCity(new City(0, new Point2D.Double(-1,5)) );
+//        graph.addCity(new City(1, new Point2D.Double(0,0)) );
+//        graph.addCity(new City(2, new Point2D.Double(0,1)) );
+//        graph.addCity(new City(3, new Point2D.Double(0,2)) );
+//        graph.addCity(new City(4, new Point2D.Double(0,3)) );
+//        graph.addCity(new City(5, new Point2D.Double(0,4)) );
+//        graph.addCity(new City(0, new Point2D.Double(1,5)) );
+//        graph.addCity(new City(5, new Point2D.Double(0,5)) );
+//    
+//        System.out.println(graph.getMSTCost());
+//    
 //    q.setDistancetoPoint(p);
 //    City f = new City(q);
 //        System.out.println(q.distanceToPoint);
-//    
-        
-        
+    
+               
           Main t = new Main();
-//          t.testBranchBound(5, 15, "graphs/test");
-//          t.testExhaustive(5, 13, "graphs/test");
-          t.testGreedyBranchBound(5,25,"graphs/test");
+////          t.testBranchBound(5, 15, "graphs/test");
+////          t.testExhaustive(5, 13, "graphs/test");
+          t.testTSPSolver(5,25,"graphs/test");
     }
 
+    public  void testTSPSolver(int min, int max, String name) {
+        PrintWriter fout = null;
+        try {
+            fout = new PrintWriter(name + min + "to" + max + "Heuristic");
+            fout.println("problem size time in seconds");
+            for (int i = min; i < max; ++i) {
+                Graph g = new Graph(name + i);
+                long result = testTSPSolver(g);
+                double time = result / 1000000000.0;
+                fout.print(i + "\t" + time + " cost:" + hs.bestCost + " [");
+                for (City city : hs.bestPath) {
+                    fout.print(city.name + ", ");
+                }
+                                fout.print("]\n");
+
+                fout.flush();
+
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fout.close();
+        }
+    }
+      private  long testTSPSolver(Graph g) {
+        hs = new Heuristical(g);
+        long begin = System.nanoTime();
+        hs.getPath();
+        long end = System.nanoTime();
+        return end - begin;
+    }
+    
     public  void testGreedyBranchBound(int min, int max, String name) {
         PrintWriter fout = null;
         try {

@@ -3,7 +3,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 
-public class BranchBound {
+public class BranchBound implements TSPSolver {
     
     
     Graph graph;
