@@ -1,0 +1,28 @@
+Greg Daniels
+A00789340
+CS5600 Homework 3
+
+
+Problem 1:
+
+
+
+Problem 2:
+	(a)
+
+	(b)
+		If nodes A, B , And C are all in a straight line. the minimum spanning tree will be exactly half of the optimal tour. this is because every edges is used in the minimum spanning tree and you must return to the starting node
+	(c)
+
+	(d)
+
+
+
+Problem 3:
+	A depth first search would be better. If one is physically traversing the maze then depth first search would be better because it would involve much less walking than would a breadth first search.  breadth first search requires the use of a queue. so at each intersection you come upon you would remember which options are available and then go back to the next on on the list. This would result in significantly more walking than if you used a depth first search.
+
+Problem 4:
+	(a) abcedihjfgk
+	(b) abgcfejdihk
+	(c) 
+	(d)

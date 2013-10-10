@@ -1,0 +1,11 @@
+#
+set autoscale
+set logscale y
+set title "TSP"
+set xlabel "Problem Size"
+set ylabel "Time(seconds)"
+set key left top
+plot "exhaustive5to15" using 1:2 title 'Exhaustive' with linespoints, \
+	 "branch" using 1:2 title 'Branch And Bound' with linespoints, \
+	 "bbgreedy" using 1:2 title 'Greedy Branch And Bound' with linespoints, \
+	 "heuristic" using 1:2 title 'Greedy Branch And Bound With Additional Heuristics' with linespoints 
