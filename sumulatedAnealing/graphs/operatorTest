@@ -1,0 +1,11 @@
+set term pngcairo size 640,480
+set output 'operator.png'
+set autoscale
+set title "Cost vs Operator"
+set yrange [0:40000]
+set xrange [-1:6]
+set xlabel "0: random swap 1: adjacent swap 2: reverse set 5: random operator"
+set ylabel "Best Iteration or Cost (average of 5 runs)"
+set key left top
+plot "test99operatorTest1" using 1:2 title 'cost', \
+     "test99operatorTest1" using 1:3 title 'iteration'
