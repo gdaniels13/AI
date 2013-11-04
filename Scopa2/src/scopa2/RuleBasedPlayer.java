@@ -21,9 +21,50 @@ public class RuleBasedPlayer extends Player
 
 	
 	@Override
-	public Move makeMove(ArrayList<Card> myCards, ArrayList<Card> centerCards, Deck d, int opponentCardCount) {
+	public Move makeMove(ArrayList<Card> myCards, ArrayList<Card> centerCards, Deck d, int opponentCardCount) 
+	{
+		ArrayList<Move> moves = getValidMoves(myCards, centerCards);
 		
-		return null;
+		Move max = moves.get(0);
+		for (Move move : moves) {
+			if(isScopa(move,centerCards))
+				move.value+=200;
+			if(max.value < move.value)
+			{
+				max = move;
+			}
+		}
+		return max;
 	}
 
+	//seven +1
+	//sette bello +5
+	//soldi +1 per soldi
+	//cards +1 per card
+
+	
+	public int rateMove(Move move)
+	{
+		int score = 0;
+		score+=move.myCard.score();
+		
+		if(move.centerCards != null)
+		for (Card card : move.centerCards) {
+			score+=card.score();		
+		}
+		move.value = score;
+		return score;
+	}
+
+	private boolean isScopa(Move move, ArrayList<Card> centerCards) {
+		if(move.centerCards == null) 
+			return false;
+		
+		for (Card card : centerCards) {
+			if(!move.centerCards.contains(card))
+				return false;
+		}
+			
+		return true;
+	}
 }

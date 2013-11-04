@@ -6,35 +6,29 @@
 package scopa2;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
 
 /**
  *Greg Daniels
  *gdaniels13@gmail.com
  *A00798340
  */
-public class RandomPlayer extends Player {
+public class HumanPlayer extends Player{
 
-	Random r;
-	public RandomPlayer(String name) {
+	public HumanPlayer(String name) {
 		super(name);
-		r = new Random();
 	}
 
 	
 	@Override
 	public Move makeMove(ArrayList<Card> myCards, ArrayList<Card> centerCards, Deck d, int opponentCardCount) {
-		ArrayList<Move> moves = getValidMoves(myCards, centerCards);
-		//Collections.shuffle(moves);
-		//return moves.get(0);
-		return  moves.get(r.nextInt(moves.size()));
+		return null;
 	}
 
+	
 	@Override
 	public int rateMove(Move move) {
-		return 0;
-		
-		}
-
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	
+	
 }

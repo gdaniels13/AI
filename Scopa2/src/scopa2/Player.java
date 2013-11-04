@@ -16,7 +16,11 @@ public abstract class Player {
 	
 	String name;
 	CapturedCards cc;
-		
+	int totalScore;
+	
+	
+	
+	
 	Player(String name)
 	{
 		cc = new CapturedCards(name);
@@ -32,8 +36,15 @@ public abstract class Player {
 		
 		for(Card myCard: myCards)
 		{
-			generateMoves(myCard, new ArrayList<Card>(), centerCards, moves);
+			generateMoves(myCard, new ArrayList<Card>(), centerCards, moves, 0);
 		}
+		
+		for (Card card : myCards) {
+			Move t = new Move(card, null);
+			t.value = -rateMove(t);
+			moves.add(t);
+		}
+		
 		return moves;
 	}
 
@@ -46,8 +57,7 @@ public abstract class Player {
 		return sum;
 	}
 	
-	private void generateMoves(Card myCard,ArrayList<Card> CurrentMove, ArrayList<Card> centerCards,ArrayList<Move> moves) {
-		int moveSum = sumCards(CurrentMove);
+	private void generateMoves(Card myCard,ArrayList<Card> CurrentMove, ArrayList<Card> centerCards,ArrayList<Move> moves, int moveSum) {
 		if(moveSum>myCard.value)
 		{
 //			centerCards.add(CurrentMove.get(CurrentMove.size()-1));
@@ -57,7 +67,9 @@ public abstract class Player {
 		else if(moveSum == myCard.value)
 		{
 //			centerCards.add(CurrentMove.get(CurrentMove.size()-1));
-			moves.add(new Move(myCard, new ArrayList<>(CurrentMove)));
+			Move m = new Move(myCard, new ArrayList<>(CurrentMove));
+			rateMove(m);
+			moves.add(m);
 //			CurrentMove.remove(CurrentMove.size()-1);
 			return;
 		}
@@ -68,18 +80,25 @@ public abstract class Player {
 			{
 				CurrentMove.add(card);
 				card.selected = true;
-				generateMoves(myCard, CurrentMove, centerCards, moves);
+				moveSum += card.value;
+				generateMoves(myCard, CurrentMove, centerCards, moves, moveSum);
+				moveSum -= card.value;
 				CurrentMove.remove(card);
 				card.selected = false;
 			}
 		}
 	}
 	
-	public int rateMove(Move move)
+	public abstract int rateMove(Move move);
+	
+	public void clear()
 	{
-		return 5;
+		cc = new CapturedCards(name);
 	}
 	
-	
+	public void updateScore()
+	{
+		totalScore +=cc.getPoints();
+	}
 	
 }

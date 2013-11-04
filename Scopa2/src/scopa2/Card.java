@@ -16,24 +16,24 @@ import javax.swing.ImageIcon;
 
 public class Card {
 
-public enum SUIT{
-	SOLDI("soldi"),
-	COPPE("coppe"),
-	SPADE("spade"),
-	BASTONE("bastone");
-	
-	String name;
+	public enum SUIT{
+		SOLDI("soldi"),
+		COPPE("coppe"),
+		SPADE("spade"),
+		BASTONE("bastone");
 
-	SUIT(String n)
-	{
-		this.name = n;
+		String name;
+
+		SUIT(String n)
+		{
+			this.name = n;
+		}
+
+		public String toString()
+		{
+			return name;
+		}
 	}
-	
-	public String toString()
-	{
-		return name;
-	}
-}
 
 	public SUIT suit;
 	public int value;
@@ -46,6 +46,25 @@ public enum SUIT{
 		selected = false;
 	}
 
+	int score()
+	{
+		int t = 1;
+		if(suit == SUIT.SOLDI)
+		{
+			t++;
+		}
+		if(value ==7)
+		{
+			t+=2;
+		}
+		
+		if(t ==3)
+		{
+			t+=10;
+		}
+		
+		return t;		
+	}
 	
 	@Override
 	public String toString() {

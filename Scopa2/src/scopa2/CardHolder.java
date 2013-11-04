@@ -25,9 +25,11 @@ public class CardHolder extends JPanel {
 	boolean ShowCards;
 	boolean Selectable;
 	boolean MultipleSelect;
+	boolean GUI;
 
 	//Constructor
 	CardHolder() {
+		GUI = false;
 		cards = new ArrayList<>();
 		selected = new ArrayList<>();
 		setVisible(true);
@@ -50,6 +52,7 @@ public class CardHolder extends JPanel {
 	}
 
 	public void updateDisplay() {
+		if(!GUI) return;
 		removeAll();
 		setLayout(new GridLayout(1, cards.size()));
 		int y = getLocation().y;

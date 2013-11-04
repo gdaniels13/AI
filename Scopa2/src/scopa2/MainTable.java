@@ -54,7 +54,7 @@ public class MainTable extends JFrame {
 		centerBoard.MultipleSelect= true;
 	
 		player1 = new RandomPlayer("player1");
-		player2 = new RandomPlayer("player2");
+		player2 = new RuleBasedPlayer("player2");
 		
 //		main.add(hand1);
 //		main.add(hand2);
@@ -85,8 +85,8 @@ public class MainTable extends JFrame {
 		
 		finishGame();
 		
-		System.out.println(player1.cc);
-		System.out.println(player2.cc);
+		//System.out.println(player1.cc);
+		//System.out.println(player2.cc);
 		
 	}
 
@@ -121,7 +121,6 @@ public class MainTable extends JFrame {
 	
 	private void finishGame() {
 		 lastToTake.cc.addCardVector(centerBoard.cards);
-		
 	}
 	
 	public void newHand()
@@ -160,6 +159,25 @@ public class MainTable extends JFrame {
 		
 
 	}
-
+	
+	public void simulate(Player player1, Player player2, int numGames)
+	{
+		this.player1 = player1;
+		this.player2 = player2;
+		for(int i =0; i<numGames; ++i)
+		{
+			startGame();
+			player1.updateScore();
+			player2.updateScore();
+			
+			player1.clear();
+			player2.clear();
+		}
+		
+		System.out.println("Player1 score: " + player1.totalScore);
+		System.out.println("Player2 score: " + player2.totalScore);
+	}
+	
+	
 	
 }

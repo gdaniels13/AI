@@ -15,6 +15,7 @@ public class Scopa2 {
 	 */
 	public static void main(String[] args) {
 		MainTable t = new MainTable();
-		t.startGame();
+		//t.startGame();
+		t.simulate(new RandomPlayer("random"), new RuleBasedPlayer("Rule"), 100000);
 	}
 }
