@@ -1,0 +1,39 @@
+all games to 1000
+all mcts had 500 playouts
+
+Game 1
+Player{Random, result:  totalScore: 1576, scopa=38, sevens=319, setteBello=467, soldi=360, cards=392}}
+Player{Random, result:  totalScore: 1974, scopa=30, sevens=378, setteBello=533, soldi=479, cards=554}}
+Game 2
+Player{Random, result:  totalScore: 536, scopa=87, sevens=93, setteBello=280, soldi=41, cards=35}}
+Player{RuleBased, result:  totalScore: 3433, scopa=215, sevens=681, setteBello=720, soldi=877, cards=940}}
+Game 3
+Player{RuleBased, result:  totalScore: 3377, scopa=214, sevens=687, setteBello=735, soldi=836, cards=905}}
+Player{Random, result:  totalScore: 596, scopa=131, sevens=91, setteBello=265, soldi=52, cards=57}}
+Game 4
+Player{RuleBased, result:  totalScore: 2402, scopa=599, sevens=382, setteBello=529, soldi=432, cards=460}}
+Player{RuleBased, result:  totalScore: 2234, scopa=666, sevens=287, setteBello=471, soldi=348, cards=462}}
+Game 5
+Player{RuleBased, result:  totalScore: 2300, scopa=519, sevens=394, setteBello=508, soldi=409, cards=470}}
+Player{MinMax, result:  totalScore: 2313, scopa=714, sevens=320, setteBello=492, soldi=359, cards=428}}
+Game 6
+Player{MinMax, result:  totalScore: 2337, scopa=534, sevens=365, setteBello=526, soldi=427, cards=485}}
+Player{RuleBased, result:  totalScore: 2324, scopa=723, sevens=339, setteBello=474, soldi=350, cards=438}}
+Game 7
+Player{randomMCTS, result:  totalScore: 3612, scopa=245, sevens=736, setteBello=807, soldi=891, cards=933}}
+Player{Random, result:  totalScore: 496, scopa=117, sevens=82, setteBello=193, soldi=50, cards=54}}
+Game 8
+Player{Random, result:  totalScore: 488, scopa=84, sevens=90, setteBello=208, soldi=53, cards=53}}
+Player{randomMCTS, result:  totalScore: 3576, scopa=242, sevens=726, setteBello=792, soldi=880, cards=936}}
+Game 9
+Player{randomMCTS, result:  totalScore: 2363, scopa=571, sevens=371, setteBello=562, soldi=423, cards=436}}
+Player{RuleBased, result:  totalScore: 2307, scopa=623, sevens=339, setteBello=438, soldi=396, cards=511}}
+Game 10
+Player{RuleBased, result:  totalScore: 2502, scopa=614, sevens=409, setteBello=487, soldi=460, cards=532}}
+Player{randomMCTS, result:  totalScore: 2347, scopa=753, sevens=317, setteBello=513, soldi=360, cards=404}}
+Game 11
+Player{randomMCTS, result:  totalScore: 2430, scopa=582, sevens=388, setteBello=595, soldi=429, cards=436}}
+Player{MinMax, result:  totalScore: 2244, scopa=630, sevens=314, setteBello=405, soldi=397, cards=498}}
+Game 12
+Player{MinMax, result:  totalScore: 2459, scopa=550, sevens=398, setteBello=511, soldi=478, cards=522}}
+Player{randomMCTS, result:  totalScore: 2252, scopa=728, sevens=295, setteBello=489, soldi=333, cards=407}}

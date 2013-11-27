@@ -1,0 +1,6 @@
+Game 1
+Player{RuleBasedMCTS 300, result:  totalScore: 258, scopa=69, sevens=42, setteBello=63, soldi=39, cards=45}}
+Player{RuleBased, result:  totalScore: 231, scopa=68, sevens=35, setteBello=37, soldi=43, cards=48}}
+Game 2
+Player{RuleBased, result:  totalScore: 258, scopa=54, sevens=40, setteBello=57, soldi=50, cards=57}}
+Player{RuleBasedMCTS 300, result:  totalScore: 205, scopa=69, sevens=28, setteBello=43, soldi=31, cards=34}}

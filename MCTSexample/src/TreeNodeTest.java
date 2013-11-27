@@ -14,7 +14,7 @@ public class TreeNodeTest {
         System.out.println("list: " + list);
         TreeNode tn = new TreeNode();
         ElapsedTimer t = new ElapsedTimer();
-        int n = 400;
+        int n = 50;
         for (int i=0; i<n; i++) {
             tn.selectAction();
         }

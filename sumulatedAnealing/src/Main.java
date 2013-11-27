@@ -20,16 +20,18 @@ public class Main {
 	public static void main(String[] args) {
 
 		Main t = new Main();
+		t.hillClimberTest("tsp225.txt", true, false, true, true);
         t.testGraph("tsp225.txt");
 //		t.testGraph("graphs/test19");
 //		t.TemperatureTest("graphs/test99",.9);
 //		t.TemperatureTest("graphs/test99",.8);
 //		t.TemperatureTest("graphs/test99",.7);
 //		t.TemperatureTest("graphs/test99",.6);
-//		t.operatorTest("graphs/test99");
+		t.operatorTest("tsp225.txt");
 //		t.scaleTest("graphs/test");
 //		t.testCPU();
 	}
+	
 
 	public void testGraph(String name) {
 		long timeout = 10000000;
@@ -131,6 +133,26 @@ public class Main {
 
 	}
 
+public void hillClimberTest(String name, boolean random, boolean restart, boolean hillClimber, boolean liveDisplay) {
+		long iterationTimeout = 5;
+
+		double costAcc = 0;
+		double itAcc = 0;
+
+			Graph g = new Graph(name);
+//			SimulatedAnealing sa = new SimulatedAnealing(g);
+//			sa.random = random;
+//			sa.restart = restart;
+//			sa.hillClimber = hillClimber;
+//			sa.liveDisplay = liveDisplay;
+			
+			HillClimber sa = new HillClimber(g);
+			
+			sa.findPath(iterationTimeout);
+			sa.createPicture(g.nodes, "Hill CLimber " + g.findCost());
+}
+	
+	
 	public void operatorTest(String name) {
 		long iterationTimeout = 500000;
 		PrintWriter fout = null;
@@ -144,38 +166,38 @@ public class Main {
 		double itAcc = 0;
 		fout.println("operator\t avgCost\t avgIteration");
 		for (int j = 0; j < 3; ++j) {
-			costAcc = 0;
-			itAcc = 0;
-			for (int i = 0; i < 5; ++i) {
+			//costAcc = 0;
+			//itAcc = 0;
+			//for (int i = 0; i < 5; ++i) {
 				Graph g = new Graph(name);
 				SimulatedAnealing sa = new SimulatedAnealing(g);
 				sa.random = false;
 				sa.opCount = j;
 				sa.hillClimber = false;
 				sa.restart = false;
-				sa.liveDisplay = false;
+				sa.liveDisplay = true;
 				sa.findPath(iterationTimeout);
-				costAcc += sa.lastCost;
-				itAcc += sa.bestIteration;
-			}
-			costAcc /= 5;
-			itAcc /= 5;
-			fout.printf("%d\t%f\t%f\n ", j, costAcc, itAcc);
-			fout.flush();
+			//	costAcc += sa.lastCost;
+			//	itAcc += sa.bestIteration;
+			//}
+			//costAcc /= 5;
+			//itAcc /= 5;
+			//fout.printf("%d\t%f\t%f\n ", j, costAcc, itAcc);
+			//fout.flush();
 		}
-		costAcc = 0;
-		itAcc = 0;
-		for (int i = 0; i < 5; ++i) {
-			Graph g = new Graph(name);
-			SimulatedAnealing sa = new SimulatedAnealing(g);
-			sa.random = true;
-			sa.restart = false;
-			sa.hillClimber = false;
-			sa.liveDisplay = false;
-			sa.findPath(iterationTimeout);
-			costAcc += sa.lastCost;
-			itAcc += sa.bestIteration;
-		}
+//		costAcc = 0;
+//		itAcc = 0;
+//		for (int i = 0; i < 5; ++i) {
+//			Graph g = new Graph(name);
+//			SimulatedAnealing sa = new SimulatedAnealing(g);
+//			sa.random = true;
+//			sa.restart = false;
+//			sa.hillClimber = false;
+//			sa.liveDisplay = false;
+//			sa.findPath(iterationTimeout);
+//			costAcc += sa.lastCost;
+//			itAcc += sa.bestIteration;
+//		}
 		costAcc /= 5;
 		itAcc /= 5;
 		fout.printf("%d\t%f\t%f\n ", 5, costAcc, itAcc);
