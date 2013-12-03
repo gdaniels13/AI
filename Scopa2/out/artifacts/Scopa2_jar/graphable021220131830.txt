@@ -1,0 +1,7 @@
+#Playouts	randomMCTS	RuleBased
+#for 200games
+500	473	477
+500	457	481
+500	501	427
+500	494	469
+500	450	501

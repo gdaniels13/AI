@@ -9,7 +9,6 @@ import java.util.Random;
 public class RuleBasedMCTS extends  Player
 {
 
-	private final int playouts;
 	private CapturedCards player1cc, player2cc;
 
 	public RuleBasedMCTS(String name, int playouts)
@@ -67,7 +66,7 @@ public class RuleBasedMCTS extends  Player
 		int count = 0;
 		for(Move move : moves)
 		{
-			for(int i = 0; i<playouts; ++i)
+			for(int i = 0; i< playouts; ++i)
 			{
 				backupGS(gs);
 				ratings[count]+=  rollOut(gs, player1, move);
@@ -123,6 +122,7 @@ public class RuleBasedMCTS extends  Player
 	private int rollOut(GameState gs, boolean player1, Move move)
 	{
 		GameState newGS = new GameState(gs);
+		newGS.deck.shuffle();
 		applyMove(newGS, move, player1);
 
 		int turns = turnsLeft(newGS);

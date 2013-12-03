@@ -13,7 +13,8 @@ public abstract class Player{
 	
 	public String name;
 	public CapturedCards cc, opponentCC;
-	
+	public int playouts;
+
 	public ScoreKeeper scoreKeeper;
 	
 	

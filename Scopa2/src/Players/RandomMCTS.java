@@ -15,7 +15,6 @@ import java.util.Random;
 public class RandomMCTS extends  Player
 {
 
-	private final int playouts;
 	private Random random;
 	private CapturedCards player1cc, player2cc;
 
@@ -131,6 +130,7 @@ public class RandomMCTS extends  Player
 	private int rollOut(GameState gs, boolean player1, Move move)
 	{
 		GameState newGS = new GameState(gs);
+		newGS.deck.shuffle();
 		applyMove(newGS, move, player1);
 
 		int turns = turnsLeft(newGS);
