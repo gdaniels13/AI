@@ -1,2 +1,0 @@
-Player{RuleBased, result:  totalScore: 2377, scopa=599, sevens=377, setteBello=520, soldi=420, cards=461}}
-Player{RuleBased, result:  totalScore: 2300, scopa=726, sevens=293, setteBello=480, soldi=338, cards=463}}

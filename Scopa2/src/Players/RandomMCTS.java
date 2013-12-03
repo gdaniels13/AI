@@ -165,11 +165,11 @@ public class RandomMCTS extends  Player
 
 		if(player1)
 		{
-			return newGS.player1.cc.getPoints();
+			return newGS.player1.cc.getPoints() - newGS.player2.cc.getPoints();
 		}
 		else
 		{
-			return newGS.player2.cc.getPoints();
+			return newGS.player2.cc.getPoints()-newGS.player1.cc.getPoints() ;
 		}
 	}
 

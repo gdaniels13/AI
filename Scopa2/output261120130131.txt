@@ -1,3 +1,0 @@
-Game 1
-Player{RuleBasedMCTS 100, result:  totalScore: 205, scopa=58, sevens=37, setteBello=48, soldi=32, cards=30}}
-Player{RuleBased, result:  totalScore: 267, scopa=63, sevens=38, setteBello=52, soldi=50, cards=64}}
