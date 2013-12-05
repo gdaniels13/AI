@@ -11,20 +11,12 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
     }
 });
 
-exec('java -jar improved.jar improved/lower' ,function(a,b,c){
-	sendSuccessRequestEmail("improved lower is finished",a,b,c)
+exec('java -jar improved.jar random' ,function(a,b,c){
+	sendSuccessRequestEmail("improved  is finished",a,b,c)
 });
 pausecomp(60000);
-exec('java -jar improved.jar RuleBased/lower' ,function(a,b,c){
-	sendSuccessRequestEmail("RuleBased lower is finished",a,b,c)
-});
-pausecomp(60000);
-exec('java -jar improved.jar improved/upper' ,function(a,b,c){
-	sendSuccessRequestEmail("improved upper is finished",a,b,c)
-});
-pausecomp(60000);
-exec('java -jar improved.jar RuleBased/upper' ,function(a,b,c){
-	sendSuccessRequestEmail("RuleBased upper is finished",a,b,c)
+exec('java -jar improved.jar ruleBased' ,function(a,b,c){
+	sendSuccessRequestEmail("RuleBased is finished",a,b,c)
 });
 
 function pausecomp(millis)
