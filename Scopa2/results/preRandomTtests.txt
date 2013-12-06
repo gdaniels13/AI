@@ -1,0 +1,80 @@
+playouts
+	T Test P value	6.8942E-16
+50	standard deviation of preRandom MCTS	18.49498223
+50	standard deviation of Rule Based	22.90562848
+	
+	T Test P value	8.54285E-11
+100	standard deviation of preRandom MCTS	24.2088613
+100	standard deviation of Rule Based	20.35458659
+	
+	T Test P value	3.77204E-12
+150	standard deviation of preRandom MCTS	19.27600498
+150	standard deviation of Rule Based	21.77526278
+	
+	T Test P value	0.000141432
+200	standard deviation of preRandom MCTS	21.53663012
+200	standard deviation of Rule Based	23.97510682
+	
+	T Test P value	0.001971493
+250	standard deviation of preRandom MCTS	23.89286432
+250	standard deviation of Rule Based	28.08175667
+	
+	T Test P value	0.070823294
+300	standard deviation of preRandom MCTS	18.21127603
+300	standard deviation of Rule Based	18.25628533
+	
+	T Test P value	9.53772E-05
+350	standard deviation of preRandom MCTS	20.99655144
+350	standard deviation of Rule Based	15.43156937
+	
+	T Test P value	0.110194663
+400	standard deviation of preRandom MCTS	19.9252915
+400	standard deviation of Rule Based	21.08060611
+	
+	T Test P value	0.236664563
+450	standard deviation of preRandom MCTS	23.88403497
+450	standard deviation of Rule Based	26.30766245
+	
+	T Test P value	0.397950448
+500	standard deviation of preRandom MCTS	24.12679628
+500	standard deviation of Rule Based	22.43755063
+	
+	T Test P value	0.38182577
+550	standard deviation of preRandom MCTS	24.33303417
+550	standard deviation of Rule Based	24.72180851
+	
+	T Test P value	0.313210334
+600	standard deviation of preRandom MCTS	15.30772474
+600	standard deviation of Rule Based	23.5305866
+	
+	T Test P value	0.127872273
+650	standard deviation of preRandom MCTS	26.45282072
+650	standard deviation of Rule Based	24.34023678
+	
+	T Test P value	0.007134223
+700	standard deviation of preRandom MCTS	18.19043578
+700	standard deviation of Rule Based	20.21553403
+	
+	T Test P value	0.286631716
+750	standard deviation of preRandom MCTS	26.45351594
+750	standard deviation of Rule Based	25.81412337
+	
+	T Test P value	0.091075464
+800	standard deviation of preRandom MCTS	24.02058504
+800	standard deviation of Rule Based	26.35498164
+	
+	T Test P value	0.000179012
+850	standard deviation of preRandom MCTS	21.93972935
+850	standard deviation of Rule Based	21.72421182
+	
+	T Test P value	0.146199167
+900	standard deviation of preRandom MCTS	23.37807697
+900	standard deviation of Rule Based	20.61458027
+	
+	T Test P value	0.006307176
+950	standard deviation of preRandom MCTS	21.90470479
+950	standard deviation of Rule Based	24.2565076
+	
+	T Test P value	0.157395206
+1000	standard deviation of preRandom MCTS	21.74377966
+1000	standard deviation of Rule Based	21.04688253

@@ -1,0 +1,57 @@
+playouts
+	T Test P value	1.96977E-14
+50	standard deviation of modifiedRandom MCTS	24.119935
+50	standard deviation of Rule Based	21.09376985
+
+	T Test P value	3.19367E-08
+100	standard deviation of modifiedRandom MCTS	19.31659997
+100	standard deviation of Rule Based	13.58874619
+
+	T Test P value	0.45574569
+150	standard deviation of modifiedRandom MCTS	22.16347311
+150	standard deviation of Rule Based	23.22624853
+
+	T Test P value	0.414900639
+200	standard deviation of modifiedRandom MCTS	22.41140925
+200	standard deviation of Rule Based	23.05216473
+
+	T Test P value	0.010200248
+250	standard deviation of modifiedRandom MCTS	23.10269427
+250	standard deviation of Rule Based	21.60736358
+
+	T Test P value	0.030872779
+300	standard deviation of modifiedRandom MCTS	24.01771377
+300	standard deviation of Rule Based	22.13500894
+
+	T Test P value	4.78611E-07
+350	standard deviation of modifiedRandom MCTS	19.95915369
+350	standard deviation of Rule Based	21.14275507
+
+	T Test P value	4.03761E-05
+400	standard deviation of modifiedRandom MCTS	21.71275381
+400	standard deviation of Rule Based	19.14256856
+
+	T Test P value	2.41954E-06
+450	standard deviation of modifiedRandom MCTS	19.88345353
+450	standard deviation of Rule Based	25.0041146
+
+	T Test P value	4.3805E-05
+500	standard deviation of modifiedRandom MCTS	20.89172965
+500	standard deviation of Rule Based	20.56838887
+
+	T Test P value	7.99957E-06
+550	standard deviation of modifiedRandom MCTS	25.55444942
+550	standard deviation of Rule Based	22.53059223
+
+	T Test P value	0.001224637
+600	standard deviation of modifiedRandom MCTS	24.20601236
+600	standard deviation of Rule Based	22.54803302
+
+	T Test P value	3.51085E-07
+650	standard deviation of modifiedRandom MCTS	23.71829402
+650	standard deviation of Rule Based	25.72096064
+
+	T Test P value	5.99776E-10
+700	standard deviation of modifiedRandom MCTS	25.85194361
+700	standard deviation of Rule Based	20.66703745
+

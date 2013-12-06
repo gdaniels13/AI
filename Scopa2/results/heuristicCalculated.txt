@@ -1,0 +1,3 @@
+#rollouts	minmax	rulebaseddev	minmax	rulebasedMedian
+3
+31	22.386264261511048	21.58383814258987	457.4	477
